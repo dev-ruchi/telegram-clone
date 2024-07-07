@@ -9,7 +9,17 @@ function Message({ message }) {
 
   // Render the message using markdown-it
   let html = md.render(message.message);
-  html = he.decode(html)
+  html = he.decode(html);
+
+  function getTime(timestamp) {
+    const date = new Date(timestamp);
+    const formattedTime = date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+    return formattedTime;
+  }
 
   return (
     <div key={message.id} className="mb-2">
@@ -18,6 +28,7 @@ function Message({ message }) {
           {message.sender.name}
         </p>
         <div dangerouslySetInnerHTML={{ __html: html }} />
+        <p className="text-xs text-right text-gray-700">{getTime(message.created_at)}</p>
       </div>
     </div>
   );
