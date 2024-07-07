@@ -13,6 +13,9 @@
     "@mui/icons-material": "^5.16.0",
     "@mui/lab": "^5.0.0-alpha.171",
     "@mui/material": "next",
+    "he": "^1.2.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-sup": "^2.0.0",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "^6.24.1"

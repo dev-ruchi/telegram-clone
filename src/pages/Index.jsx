@@ -39,8 +39,12 @@ const Index = () => {
   };
 
   return (
-    <Grid2 container spacing={2}>
-      <Grid2 xs={12} md={4}>
+    <Grid2
+      className="bg-[linear-gradient(#c3d08cdd,#5ca853dd),url('/bg-pattern.svg')] dark:bg-[linear-gradient(#00000066,#77309044),url('/bg-pattern.svg')]"
+      container
+      spacing={2}
+    >
+      <Grid2 className="bg-white dark:bg-[#212121]" xs={12} md={3}>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -55,7 +59,11 @@ const Index = () => {
             </Box>
             <TabPanel className="!p-0 !py-2" value="1">
               {chats.map((chat) => (
-                <ChatPreview onClick={() => setActiveChatId(chat.id)} chat={chat} key={chat.id} />
+                <ChatPreview
+                  onClick={() => setActiveChatId(chat.id)}
+                  chat={chat}
+                  key={chat.id}
+                />
               ))}
             </TabPanel>
             <TabPanel value="2">Item Two</TabPanel>
@@ -63,7 +71,7 @@ const Index = () => {
           </TabContext>
         </Box>
       </Grid2>
-      <Grid2 xs={12} md={8}>
+      <Grid2 xs={12} md={9}>
         {activeChatId && <Chat id={activeChatId} />}
       </Grid2>
     </Grid2>
