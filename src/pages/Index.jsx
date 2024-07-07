@@ -8,11 +8,13 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import ChatPreview from "../components/ChatPreview";
+import Chat from "../components/Chat";
 
 const Index = () => {
   const [chats, setChats] = useState([]);
+  const [activeChatId, setActiveChatId] = useState(null);
 
-  const fetchMessages = () => {
+  const fetchChats = () => {
     fetch("https://devapi.beyondchats.com/api/get_all_chats?page=1")
       .then((res) => res.json())
       .then((data) => {
@@ -27,7 +29,7 @@ const Index = () => {
   };
 
   useEffect(() => {
-    fetchMessages();
+    fetchChats();
   }, []);
 
   const [value, setValue] = React.useState("1");
@@ -38,7 +40,7 @@ const Index = () => {
 
   return (
     <Grid2 container spacing={2}>
-      <Grid2 xs={12} lg={4}>
+      <Grid2 xs={12} md={4}>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -53,7 +55,7 @@ const Index = () => {
             </Box>
             <TabPanel className="!p-0 !py-2" value="1">
               {chats.map((chat) => (
-                <ChatPreview chat={chat} key={chat.id} />
+                <ChatPreview onClick={() => setActiveChatId(chat.id)} chat={chat} key={chat.id} />
               ))}
             </TabPanel>
             <TabPanel value="2">Item Two</TabPanel>
@@ -61,7 +63,9 @@ const Index = () => {
           </TabContext>
         </Box>
       </Grid2>
-      <Grid2 xs={12} lg={8}></Grid2>
+      <Grid2 xs={12} md={8}>
+        {activeChatId && <Chat id={activeChatId} />}
+      </Grid2>
     </Grid2>
   );
 };

@@ -1,8 +1,8 @@
 import React from "react";
 
-function ChatPreview({ chat }) {
+function ChatPreview({ chat, onClick }) {
   return (
-    <div className="p-2 bg-gray rounded-lg cursor-pointer hover:bg-[#32495f]">
+    <div className="p-2 bg-gray rounded-lg cursor-pointer hover:bg-[#32495f]" onClick={onClick}>
       <div className="flex gap-4">
         <img src={`https://ui-avatars.com/api/?name=${chat.creator.name}`} alt="" className="w-12 h-12 rounded-full mb-2" />
         <div>
