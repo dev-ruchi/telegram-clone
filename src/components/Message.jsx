@@ -23,7 +23,7 @@ function Message({ message }) {
 
   return (
     <div key={message.id} className="mb-2">
-      <div className="max-w-xs break-words p-2 rounded-lg bg-white dark:text-gray-900">
+      <div className="max-w-xs break-words p-2 rounded-lg text-gray-900 bg-white dark:text-gray-900">
         <p className="text-sm font-bold mb-1 text-red-400">
           {message.sender.name}
         </p>

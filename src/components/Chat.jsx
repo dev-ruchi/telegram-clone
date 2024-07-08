@@ -18,9 +18,9 @@ function Chat({ id }) {
   }, [id]);
 
   return (
-    <div className="p-4 h-screen overflow-y-scroll max-w-[660px] mx-auto">
+    <div className="p-4 h-screen overflow-y-scroll mx-auto">
       {messages.map((message) => (
-        <Message message={message} key={message.id} />
+        <Message className="max-w-[660px]" message={message} key={message.id} />
       ))}
     </div>
   );

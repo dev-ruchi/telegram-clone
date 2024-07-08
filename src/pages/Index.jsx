@@ -22,7 +22,6 @@ const Index = () => {
           console.error("Unexpected data format:", data);
           return;
         }
-        console.log(data.data.data);
         setChats(data.data.data);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -40,7 +39,7 @@ const Index = () => {
 
   return (
     <Grid2
-      className="bg-[linear-gradient(#c3d08cdd,#5ca853dd),url('/bg-pattern.svg')] dark:bg-[linear-gradient(#00000066,#77309044),url('/bg-pattern.svg')]"
+      className="bg-[url('/bg-pattern.svg'),linear-gradient(#d3d78d,#8bb689,#d4dab7)] dark:bg-[linear-gradient(#00000066,#77309044),url('/bg-pattern.svg')]"
       container
       spacing={2}
     >
