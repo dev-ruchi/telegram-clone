@@ -15,8 +15,15 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import StoriesIcon from "@mui/icons-material/LibraryBooks";
+import ContactsIcon from "@mui/icons-material/Contacts";
+import SettingsIcon from "@mui/icons-material/Settings";
+import AnimationsIcon from "@mui/icons-material/Animation";
+import FeaturesIcon from "@mui/icons-material/Extension";
+import ReportIcon from "@mui/icons-material/Report";
+import SwitchIcon from "@mui/icons-material/SwapHoriz";
+import InstallIcon from "@mui/icons-material/GetApp";
 import { Outlet } from "react-router-dom";
 import ModeSwitcher from "./ModeSwitcher";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -84,6 +91,18 @@ const lightTheme = createTheme({
   },
 });
 
+const iconMap = {
+  "Saved Message": <BookmarkIcon />,
+  "My Stories": <StoriesIcon />,
+  Contacts: <ContactsIcon />,
+  Settings: <SettingsIcon />,
+  Animations: <AnimationsIcon />,
+  "Telegram Features": <FeaturesIcon />,
+  "Report Bug": <ReportIcon />,
+  "Switch to A version": <SwitchIcon />,
+  "Install App": <InstallIcon />,
+};
+
 export default function PersistentDrawerLeft() {
   const currentTheme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -145,12 +164,20 @@ export default function PersistentDrawerLeft() {
           </DrawerHeader>
           <Divider />
           <List>
-            {["Inbox"].map((text, index) => (
+            {[
+              "Saved Message",
+              "My Stories",
+              "Contacts",
+              "Settings",
+              "Animations",
+              "Telegram Features",
+              "Report Bug",
+              "Switch to A version",
+              "Install App",
+            ].map((text) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
+                  <ListItemIcon>{iconMap[text]}</ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
